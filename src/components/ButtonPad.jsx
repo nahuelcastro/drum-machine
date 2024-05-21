@@ -3,10 +3,11 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import audioMap from "../utils/audio";
 
-export default function DrumPad({kkey}) {
+export default function DrumPad({kkey, setDisplay}) {
 
     const handleBtnClick = () => {
         let audio = document.getElementById(kkey);
+        setDisplay(audioMap[kkey].label);
         audio.play();
     }
 
@@ -24,8 +25,8 @@ const styles = {
 
 
     btn: {
-        width: "10vh",
-        height: "10vh",
+        width: "100px",
+        height: "100px",
         borderRadius: "8px",
         color: "white",
         // backgroundColor: "#070F2B",
@@ -35,8 +36,8 @@ const styles = {
         justifyContent: "center",
         alignItems: "center",
         flexDirection: "column",
-        margin: "3px",
-        marginTop: "10px",
+        margin: "4px",
+        // marginTop: "10px",
         boxShadow: "0 0 10px #000",
     }
 }

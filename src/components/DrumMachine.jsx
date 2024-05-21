@@ -16,6 +16,7 @@ export default function DrumMachine() {
     const [power, setPower] = useState(true);
     const [bank, setBank] = useState(true);
     const [volume, setVolume] = useState(50); // 0-100
+    const [display, setDisplay] = useState("Power On");
 
     const handleKeyPress = (e) => {
         if (power) {
@@ -37,11 +38,11 @@ export default function DrumMachine() {
     return (
         <Container id={"drum-machine"} style={styles.container}>
             <Row>
-                <Col md={7}>
-                    <DrumPad />
+                <Col md={6}>
+                    <DrumPad setDisplay={setDisplay}/>
                 </Col>
-                <Col md={5}>
-                    <DrumControlTable />
+                <Col md={6}>
+                    <DrumControlTable display={display}/>
                 </Col>
             </Row>
         </Container>
@@ -52,11 +53,13 @@ const styles = {
     container: {
         backgroundColor: "#1B1A55",
         color: "white",
-        marginTop: "30vh",
-        height: "40vh",
-        display: "flex",
+        marginTop: "300px",
+        padding: "30px",
+        height: "420px",
+        width: "60%",
+        // display: "flex",
         justifyContent: "center",
-        alignItems: "center",
+        // alignItems: "center",
         borderRadius: "20px",
     }
 }

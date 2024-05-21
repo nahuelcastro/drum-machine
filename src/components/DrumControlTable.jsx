@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import FormCheck from "react-bootstrap/FormCheck";
 
-export default function DrumControlTable() {
+export default function DrumControlTable({display}) {
     return(
         <Container style={styles.container}>
             <Row>
@@ -13,7 +13,7 @@ export default function DrumControlTable() {
                 <FormCheck type="switch" id="power" style={styles.switch}/>
             </Row>
             <Row>
-                <h1 id={"display"}>Display</h1>
+                <h3 id={"display"} style={styles.display}>{display}</h3>
             </Row>
             <Row>
                 <h1 style={styles.title}>Volume</h1>
@@ -43,6 +43,18 @@ const styles = {
     title: {
         textAlign: "center",
         color: "white",
+    },
+    display: {
+        textAlign: "center",
+        color: "black",
+        backgroundColor: "grey",
+        width: "90%",
+        margin: "30px auto",
+        padding: "10px",
+        borderRadius: "5px",
+        boxShadow: "0 0 10px #000",
+        fontFamily: "monospace",
+        fontSize: "20px",
     }
 
 
