@@ -1,17 +1,21 @@
 import React from 'react';
+import {useState} from 'react';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import Col from 'react-bootstrap/Col';
+import Container from 'react-bootstrap/Container';
+import Row from 'react-bootstrap/Row'
+
+import DrumMachine from "./components/DrumMachine";
 
 function App() {
   return (
-    <div style={{ textAlign: 'center' }}>
-      <header>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a href="https://reactjs.org" target="_blank" rel="noopener noreferrer">
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+            <Container fluid="md">
+                <Row>
+                  <DrumMachine/>
+                </Row>
+            </Container>
+        </>
   );
 }
 
