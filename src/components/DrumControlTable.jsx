@@ -13,7 +13,7 @@ export default function DrumControlTable() {
                 <FormCheck type="switch" id="power" style={styles.switch}/>
             </Row>
             <Row>
-                <h1>Display</h1>
+                <h1 id={"display"}>Display</h1>
             </Row>
             <Row>
                 <h1 style={styles.title}>Volume</h1>
