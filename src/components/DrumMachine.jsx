@@ -1,5 +1,5 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import {useState} from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Col from 'react-bootstrap/Col';
@@ -8,13 +8,11 @@ import Row from 'react-bootstrap/Row'
 
 import DrumPad from "./DrumPad";
 import DrumControlTable from "./DrumControlTable";
-import audioMap from "../utils/audio";
 
 export default function DrumMachine() {
 
     const valid_keys = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
     const [power, setPower] = useState(true);
-    const [bank, setBank] = useState(true);
     const [volume, setVolume] = useState(50); // 0-100
     const [display, setDisplay] = useState("Power On");
 
@@ -31,7 +29,7 @@ export default function DrumMachine() {
         return () => {
             document.removeEventListener("keydown", handleKeyPress);
         };
-    }, []);
+    }, );
 
     document.addEventListener("keydown", handleKeyPress);
 
@@ -39,10 +37,17 @@ export default function DrumMachine() {
         <Container id={"drum-machine"} style={styles.container}>
             <Row>
                 <Col md={6}>
-                    <DrumPad setDisplay={setDisplay}/>
+                    <DrumPad setDisplay={setDisplay} volume={volume} power={power}/>
                 </Col>
                 <Col md={6}>
-                    <DrumControlTable display={display}/>
+                    <DrumControlTable
+                        display={display}
+                        setDisplay={setDisplay}
+                        volume={volume}
+                        setVolume={setVolume}
+                        power={power}
+                        setPower={setPower}
+                    />
                 </Col>
             </Row>
         </Container>
@@ -53,13 +58,14 @@ const styles = {
     container: {
         backgroundColor: "#1B1A55",
         color: "white",
-        marginTop: "300px",
+        marginTop: "240px",
         padding: "30px",
-        height: "420px",
+        height: "390px",
         width: "60%",
         // display: "flex",
         justifyContent: "center",
         // alignItems: "center",
         borderRadius: "20px",
+        boxShadow: "0 0 50px #000",
     }
 }

@@ -3,11 +3,13 @@ import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import audioMap from "../utils/audio";
 
-export default function DrumPad({kkey, setDisplay}) {
+export default function DrumPad({kkey, setDisplay, volume, power}) {
 
     const handleBtnClick = () => {
+        if (!power) return;
         let audio = document.getElementById(kkey);
         setDisplay(audioMap[kkey].label);
+        audio.volume = volume / 100;
         audio.play();
     }
 
